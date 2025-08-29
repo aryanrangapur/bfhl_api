@@ -5,15 +5,17 @@ import re
 
 app = FastAPI()
 
-FULL_NAME = "aryan_rangapur"
-DOB = "17092001"
-EMAIL = "aryan@example.com"
-ROLL_NUMBER = "VIT123"
+# Your details
+FULL_NAME = "aryan_rangapur"   
+DOB = "09092004"              
+EMAIL = "aryan.22bce7399@vitapstudent.ac.in"
+ROLL_NUMBER = "22BCE7399"
 
 class DataModel(BaseModel):
     data: List[str]
 
 def alternating_caps(s: str) -> str:
+    """Convert string to alternating caps (first char uppercase, next lowercase, etc.)."""
     result = []
     upper = True
     for ch in s:
@@ -33,12 +35,13 @@ async def process_data(payload: DataModel):
                 num = int(item)
                 (even_numbers if num % 2 == 0 else odd_numbers).append(item)
                 total_sum += num
-            elif re.match("^[A-Za-z]+$", item):
+            elif re.match("^[A-Za-z]+$", item):  # pure alphabets
                 alphabets.append(item.upper())
             else:
                 special_characters.append(item)
 
-        concat_string = alternating_caps("".join("".join(alphabets)[::-1]))
+        # Concatenation of all alphabets (joined, reversed, alternating caps)
+        concat_string = alternating_caps("".join(alphabets)[::-1])
 
         return {
             "is_success": True,
