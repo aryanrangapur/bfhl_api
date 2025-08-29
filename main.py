@@ -5,7 +5,6 @@ import re
 
 app = FastAPI()
 
-# Your details
 FULL_NAME = "aryan_rangapur"   
 DOB = "09092004"              
 EMAIL = "aryan.22bce7399@vitapstudent.ac.in"
@@ -70,3 +69,4 @@ async def process_data(payload: DataModel):
             "concat_string": "",
             "error": str(e)
         }
+
